@@ -1,7 +1,7 @@
 class SearchSong {
   final int id;
   final String title;
-  final String categories;
+  final List categories;
 
   const SearchSong({
     required this.id,

@@ -40,6 +40,7 @@ class _ListSongsScreenState extends State<ListSongsScreen> {
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             List<SearchSong> songs = sortSongs(snapshot.data!, dropdownValue);
+                            print("LENGTH - ${songs.length}");
                             return buildSongs(songs);
                           } else {
                             return const CircularProgressIndicator();

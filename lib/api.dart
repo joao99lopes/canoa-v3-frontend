@@ -23,15 +23,10 @@ class API {
   }
 
   static Future<List<SearchSong>> fetchAvailableSongs() async {
-    try {
       print(_url + "get_available_songs");
       var response = await http.get(Uri.parse(_url + "get_available_songs"));
       var body = json.decode(response.body);
       var res = body["data"].map<SearchSong>(SearchSong.fromJson).toList();
       return res;
-
-    } catch (e){
-      throw Exception();
-    }
   }
 }
