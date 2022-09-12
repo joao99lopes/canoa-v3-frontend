@@ -1,6 +1,4 @@
 import 'package:canoa_v3_frontend/models/search_song.dart';
-import 'package:canoa_v3_frontend/models/song.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:canoa_v3_frontend/api.dart';
 
@@ -32,22 +30,22 @@ class _ListSongsScreenState extends State<ListSongsScreen> {
         Expanded(
           child: Column(
             children: [
-                Center(
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: FutureBuilder<List<SearchSong>>(
-                        future: futureSongs,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            List<SearchSong> songs = sortSongs(snapshot.data!, dropdownValue);
-                            return buildSongs(songs);
-                          } else {
-                            return const CircularProgressIndicator();
-                          }
-                        },
-                      ),
-                    ),
+              Center(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: FutureBuilder<List<SearchSong>>(
+                    future: futureSongs,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List<SearchSong> songs = sortSongs(snapshot.data!, dropdownValue);
+                        return buildSongs(songs);
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
                   ),
+                ),
+              ),
             ],
           ),
         ),
@@ -86,7 +84,6 @@ class _ListSongsScreenState extends State<ListSongsScreen> {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         final song = songs[index];
-
         return Card(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,

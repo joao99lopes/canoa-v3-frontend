@@ -11,17 +11,6 @@ class API {
   /// dev environment
   // static final String _url = "http://192.168.1.76:5000/api=";
 
-
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
-  }
-
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/search_song.json');
-  }
-
   static Future<List<SearchSong>> fetchAvailableSongs() async {
       print(_url + "get_available_songs");
       var response = await http.get(Uri.parse(_url + "get_available_songs"));
